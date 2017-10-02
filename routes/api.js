@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Product = require('../modules/products')
 
 
 //get a list of products from db
@@ -7,13 +8,10 @@ router.get('/products', function(req, res) {
   res.send({type:'GET'});
 });
 
-//add a new protuct to db
+//add a new protuct to db via mongoose
 router.post('/products', function(req, res) {
-  console.log(req.body);
-  res.send({
-    type:'POST',
-    name: req.body.name,
-    price: req.body.price
+  Product.create(req.body).then(function(product){
+    res.send(product);
   });
 });
 
