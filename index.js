@@ -17,6 +17,12 @@ server.use(bodyParser.json());
 //creating of working routes
 server.use('/api', routes);
 
+//finding of error
+server.use(function(err, req, res, next){
+  //console.log(err);
+  res.send({error: err.message});
+});
+
 
 
 
