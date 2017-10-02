@@ -9,7 +9,12 @@ router.get('/products', function(req, res) {
 
 //add a new protuct to db
 router.post('/products', function(req, res) {
-  res.send({type:'POST'});
+  console.log(req.body);
+  res.send({
+    type:'POST',
+    name: req.body.name,
+    price: req.body.price
+  });
 });
 
 
