@@ -20,7 +20,8 @@ server.use('/api', routes);
 //finding of error
 server.use(function(err, req, res, next){
   //console.log(err);
-  res.send({error: err.message});
+  res.status(422).send({error: err.message});
+  console.log('Adding of ' + err.message);
 });
 
 
