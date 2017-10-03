@@ -16,8 +16,12 @@ router.post('/sendPost', function(req, res, next) {
 });
 
 //update a product in db
-router.put('/products/:id', function(req, res, next) {
-  res.send({type:'PUT'});
+router.put('/sendPut/:id', function(req, res, next) {
+  Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+    Product.findOne({_id: req.params.id}).then(function(product){
+      res.send(product);
+    });
+  });
 });
 
 
