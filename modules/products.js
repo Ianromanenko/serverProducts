@@ -1,3 +1,9 @@
+// Products application for MAPD 2017
+// Student ID: 300965052
+// Romanenko Yan
+// Version: 0.1
+// product.js file - creating and exporting of data base model
+
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
