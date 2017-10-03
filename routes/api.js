@@ -9,7 +9,7 @@ router.get('/products', function(req, res, next) {
 });
 
 //add a new protuct to db via mongoose
-router.post('/products', function(req, res, next) {
+router.post('/sendPost', function(req, res, next) {
   Product.create(req.body).then(function(product){
     res.send(product);
   }).catch(next);
@@ -22,8 +22,18 @@ router.put('/products/:id', function(req, res, next) {
 
 
 //delete a product from db
-router.delete('/products/:id', function(req, res,next) {
-  res.send({type:'DELETE'});
+router.delete('/sendDelete', function(req, res,next) {
+  /*  Deleting products by
+
+    Product.findByIdAndRemove({_id: req.params.id}).then(function(product){
+    res.send(product);
+
+  */
+  Product.remove(function(err,removed) {
+  res.send('All prod were deleted');
 });
+});
+  //});
+//});
 
 module.exports = router;
